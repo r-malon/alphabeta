@@ -1,0 +1,52 @@
+a	adds 1 to R1
+b	subtracts 1 from R1
+c	adds 10 to R1
+d	subtracts 10 from R1
+e	adds 100 to R1
+f	subtracts 100 from R1
+g	adds 1 to R2
+h	subtracts 1 from R2
+i	adds 10 to R2
+j	subtracts 10 from R2
+k	adds 100 to R2
+l	subtracts 100 from R2
+m	sets R3 to the logical NOT of R1
+n	sets R3 to the logical NOT of R2
+o	logical AND R1 and R2 and sets R3 to the result
+p	logical OR R1 and R2 and sets R3 to the result
+q	logical XOR R1 and R2 and sets R3 to the result
+r	adds R1 and R2 and sets R3 to the result
+s	subtracts R1 and R2 and sets R3 to the result
+t	multiplies R1 and R2 and sets R3 to the result
+u	divides R1 and R2 and sets R3 to the result
+v	mods R1 and R2 and sets R3 to the result
+w	R3 to R1 to the power of R2
+x	clears R1
+y	clears R2
+z	clears R3
+A	sets R2 to the value of R1
+B	sets R1 to the value of R2
+C	sets R3 to the value of R1
+D	sets R3 to the value of R2
+E	sets R1 to the value of R3
+F	sets R2 to the value of R3
+G	sets R1 to the memory at the memory pointer
+H	sets R2 to the memory at the memory pointer
+I	sets the memory at the memory pointer to the value of R3
+J	gets a character from stdin and stores it in R1
+K	gets a character from stdin and stores it in R2
+L	outputs a character to stdout
+M	outputs a number to stdout
+N	if R1 equals R2, goto the position at the position register
+O	if R1 does not equal R2, goto the position at the position register
+P	if R1 is bigger than or equals R2, goto the position at the position register
+Q	if R1 is smaller than or equals R2, goto the position at the position register
+R	if R3 equals 0, goto the position at the position register
+S	adds 1 to the current pointer
+T	subtracts 1 to the current pointer
+U	adds 10 to the current pointer
+V	subtracts 10 to the current pointer
+W	adds 100 to the current pointer
+X	subtracts 100 to the current pointer
+Y	sets the current pointer to 0
+Z	switches in-between pointers (starts on memory pointer)
