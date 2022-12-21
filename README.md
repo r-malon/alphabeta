@@ -7,6 +7,6 @@ Register 1 and 2 (R1, R2) are data registers, register 3 (R3) is the accumulator
 
 Whitespace is ignored, if a character doesn't match `/[a-zA-Z]/`, `Invalid instruction` is thrown.
 
-**See**:
-[Esolang page](https://esolangs.org/wiki/AlphaBeta)
+**See**:\
+[Esolang page](https://esolangs.org/wiki/AlphaBeta)\
 [Original C++ implementation](https://github.com/TryItOnline/alphabeta)
