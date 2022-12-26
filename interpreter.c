@@ -4,7 +4,10 @@
 #include <iso646.h>
 #include "ipow.h"
 
+#ifndef MEMSIZE
 #define MEMSIZE 1024
+#endif
+
 #define ERROR(msg) do { fputs(msg, stderr); exit(EXIT_FAILURE); } while (0)
 #define CHECKMEM(addr, errmsg) do {		\
 	if (addr < 0 or addr >= MEMSIZE)	\
@@ -114,6 +117,20 @@ main(int argc, char *argv[])
 		case 'X': P[mode] -= 100; break;
 		case 'Y': P[mode] = 0; break;
 		case 'Z': mode = not mode; break;
+		#if BASE64_EXTENSION
+		case '0': break;
+		case '1': break;
+		case '2': break;
+		case '3': break;
+		case '4': break;
+		case '5': break;
+		case '6': break;
+		case '7': break;
+		case '8': break;
+		case '9': break;
+		case '+': break;
+		case '/': break;
+		#endif
 		default: ERROR("Invalid instruction");
 		}
 	}
