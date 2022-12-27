@@ -64,7 +64,7 @@ main(int argc, char *argv[])
 		case 'n': R3 = not R2; break;
 		case 'o': R3 = R1 and R2; break;
 		case 'p': R3 = R1 or R2; break;
-		case 'q': R3 = R1 xor R2; break;
+		case 'q': R3 = not R1 != not R2; break;
 		case 'r': R3 = R1 + R2; break;
 		case 's': R3 = R1 - R2; break;
 		case 't': R3 = R1 * R2; break;
