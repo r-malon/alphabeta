@@ -43,7 +43,7 @@ main(int argc, char *argv[])
 		fp = stdin;
 	}
 
-	while ((c = getc(fp)) != EOF) {
+	while ((c = getc(fp)) != EOF) { /* TODO: buffered input */
 		if (isspace(c))
 			continue;
 
@@ -117,26 +117,26 @@ main(int argc, char *argv[])
 		case 'X': P[mode] -= 100; break;
 		case 'Y': P[mode] = 0; break;
 		case 'Z': mode = not mode; break;
-		#if BASE64_EXTENSION
-		case '0': break;
-		case '1': break;
-		case '2': break;
-		case '3': break;
-		case '4': break;
-		case '5': break;
-		case '6': break;
-		case '7': break;
-		case '8': break;
-		case '9': break;
-		case '+': break;
-		case '/': break;
+		#if MORE_INSTR
+		case '0': return 0;
+		case '1': R3 = ~R3; break;
+		case '2': R3 = R1 & R2; break;
+		case '3': R3 = R1 | R2; break;
+		case '4': R3 = R1 ^ R2; break;
+		case '5': R3 |= 1L << R1; break;
+		case '6': R3 &= ~(1L << R1); break;
+		case '7': R3 ^= 1L << R1; break;
+		case '8': R3 = (R1 >> R2) & 1U; break; /* Redundant? */
+		case '9': tmp = R1; R1 = R2; R2 = tmp; break;
+		case '+': R3 = R1 << R2; break;
+		case '/': R3 = R1 >> R2; break;
 		#endif
 		default: ERROR("Invalid instruction");
 		}
 	}
 
 	if (argc > 1)
-		fclose(fp); /* undefined behavior if stdin */
+		fclose(fp); /* Undefined behavior if stdin */
 
 	return 0;
 }

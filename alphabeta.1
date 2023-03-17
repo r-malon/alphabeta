@@ -1,0 +1,35 @@
+.Dd $Mdocdate$
+.Dt ALPHABETA 1
+.Os
+.Sh NAME
+.Nm alphabeta
+.Nd recreational programming language
+.Sh SYNOPSIS
+.Nm alphabeta
+.Op Ar file
+.Ar
+.Sh DESCRIPTION
+The
+.Nm
+utility processes files ...
+If
+.Ar file
+absent,
+.Nm
+reads from the standard input.
+.\" .Sh ENVIRONMENT
+.\" For sections 1, 6, 7, and 8 only.
+.Sh EXIT STATUS
+.Nm
+exits 0 on success, and >0 if an error occurs.
+.Sh EXAMPLES
+Interpret line by line ("interactive mode"):
+.Dl $ alphabeta
+Read from stdin:
+.Dl $ <examples/99.abc alphabeta
+Read from file:
+.Dl $ alphabeta examples/99.abc
+.\" .Sh DIAGNOSTICS
+.\" For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.
+.\" .Sh SEE ALSO
+.\" .Xr foobar 1
