@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+*.db
 
 # Debug files
 *.dSYM/
@@ -42,6 +43,7 @@
 *.idb
 *.pdb
 *.log
+*.core
 
 # Kernel Module Compile Results
 *.mod*
@@ -51,3 +53,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# man
+*.pdf
+*.ps
+*.html

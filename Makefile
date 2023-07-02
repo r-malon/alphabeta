@@ -1,3 +1,5 @@
+.POSIX:
+
 include config.mk
 
 PROG = alphabeta
@@ -17,13 +19,14 @@ $(PROG): $(OBJS)
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
+	mkdir -p $(DESTDIR)$(MANPREFIX)/man$(MANSECTION)
 	install -m 755 $(PROG) $(DESTDIR)$(PREFIX)/bin/$(PROG)
-	install -m 644 $(PROG).1 $(DESTDIR)$(MANPREFIX)/man1/$(PROG).1
+	install -m 644 $(PROG).$(MANSECTION) \
+		$(DESTDIR)$(MANPREFIX)/man$(MANSECTION)/$(PROG).$(MANSECTION)
 
 uninstall:
 	rm $(DESTDIR)$(PREFIX)/bin/$(PROG)
-	rm $(DESTDIR)$(MANPREFIX)/man1/$(PROG).1
+	rm $(DESTDIR)$(MANPREFIX)/man$(MANSECTION)/$(PROG).$(MANSECTION)
 
 clean:
 	-rm -f $(OBJS) $(PROG)

@@ -17,10 +17,10 @@
 
 int R1 = 0;
 int R2 = 0;
-int R3 = 0; /* Accumulator */
+int R3 = 0;	/* Accumulator */
 int P[] = {
-	0, /* Memory pointer */
-	0  /* Position pointer */
+	0,	/* Memory pointer */
+	0	/* Position pointer */
 };
 int mode = 0;
 int mem[MEMSIZE];
@@ -43,7 +43,7 @@ main(int argc, char *argv[])
 		fp = stdin;
 	}
 
-	while ((c = getc(fp)) != EOF) { /* TODO: buffered input */
+	while ((c = getc(fp)) != EOF) {	/* TODO: block input */
 		if (isspace(c))
 			continue;
 
@@ -117,26 +117,28 @@ main(int argc, char *argv[])
 		case 'X': P[mode] -= 100; break;
 		case 'Y': P[mode] = 0; break;
 		case 'Z': mode = not mode; break;
-		#if MORE_INSTR
-		case '0': return 0;
+	#if MORE_INSTR
+		case '0': goto exit;
 		case '1': R3 = ~R3; break;
 		case '2': R3 = R1 & R2; break;
 		case '3': R3 = R1 | R2; break;
 		case '4': R3 = R1 ^ R2; break;
-		case '5': R3 |= 1L << R1; break;
-		case '6': R3 &= ~(1L << R1); break;
-		case '7': R3 ^= 1L << R1; break;
-		case '8': R3 = (R1 >> R2) & 1U; break; /* Redundant? */
+		case '5': R3 |= 1UL << R1; break;
+		case '6': R3 &= ~(1UL << R1); break;
+		case '7': R3 ^= 1UL << R1; break;
+		case '8': R3 = (R1 >> R2) & 1UL; break;
 		case '9': tmp = R1; R1 = R2; R2 = tmp; break;
 		case '+': R3 = R1 << R2; break;
 		case '/': R3 = R1 >> R2; break;
-		#endif
+	#endif
 		default: ERROR("Invalid instruction");
 		}
 	}
-
-	if (argc > 1)
-		fclose(fp); /* Undefined behavior if stdin */
+#if MORE_INSTR
+exit:
+#endif
+	if (fp != stdin)
+		fclose(fp);
 
 	return 0;
 }

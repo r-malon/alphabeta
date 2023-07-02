@@ -20,7 +20,7 @@ s	subtracts R1 and R2 and sets R3 to the result
 t	multiplies R1 and R2 and sets R3 to the result
 u	divides R1 and R2 and sets R3 to the result
 v	mods R1 and R2 and sets R3 to the result
-w	R3 to R1 to the power of R2
+w	raises R1 to the power of R2 and sets R3 to the result
 x	clears R1
 y	clears R2
 z	clears R3

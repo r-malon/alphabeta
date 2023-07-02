@@ -1,4 +1,4 @@
-.Dd $Mdocdate$
+.Dd $Mdocdate: April 30 2023 $
 .Dt ALPHABETA 1
 .Os
 .Sh NAME
@@ -7,21 +7,320 @@
 .Sh SYNOPSIS
 .Nm alphabeta
 .Op Ar file
-.Ar
 .Sh DESCRIPTION
-The
 .Nm
-utility processes files ...
+reads
+.Ar file
+and interprets each character as in
+.Sx INSTRUCTIONS .
 If
 .Ar file
-absent,
+is absent,
 .Nm
 reads from the standard input.
-.\" .Sh ENVIRONMENT
-.\" For sections 1, 6, 7, and 8 only.
+.Sh INSTRUCTIONS
+.Bl -tag -width XXX
+.It a
+adds 1 to
+.Va R1
+.It b
+subtracts 1 from
+.Va R1
+.It c
+adds 10 to
+.Va R1
+.It d
+subtracts 10 from
+.Va R1
+.It e
+adds 100 to
+.Va R1
+.It f
+subtracts 100 from
+.Va R1
+.It g
+adds 1 to
+.Va R2
+.It h
+subtracts 1 from
+.Va R2
+.It i
+adds 10 to
+.Va R2
+.It j
+subtracts 10 from
+.Va R2
+.It k
+adds 100 to
+.Va R2
+.It l
+subtracts 100 from
+.Va R2
+.It m
+sets
+.Va R3
+to the logical NOT of
+.Va R1
+.It n
+sets
+.Va R3
+to the logical NOT of
+.Va R2
+.It o
+logical AND
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It p
+logical OR
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It q
+logical XOR
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It r
+adds
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It s
+subtracts
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It t
+multiplies
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It u
+divides
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It v
+mods
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It w
+raises
+.Va R1
+to the power of
+.Va R2
+and sets
+.Va R3
+to the result
+.It x
+clears
+.Va R1
+.It y
+clears
+.Va R2
+.It z
+clears
+.Va R3
+.It A
+sets
+.Va R2
+to the value of
+.Va R1
+.It B
+sets
+.Va R1
+to the value of
+.Va R2
+.It C
+sets
+.Va R3
+to the value of
+.Va R1
+.It D
+sets
+.Va R3
+to the value of
+.Va R2
+.It E
+sets
+.Va R1
+to the value of
+.Va R3
+.It F
+sets
+.Va R2
+to the value of
+.Va R3
+.It G
+sets
+.Va R1
+to the memory at the memory pointer
+.It H
+sets
+.Va R2
+to the memory at the memory pointer
+.It I
+sets the memory at the memory pointer to the value of
+.Va R3
+.It J
+gets a character from stdin and stores it in
+.Va R1
+.It K
+gets a character from stdin and stores it in
+.Va R2
+.It L
+outputs a character to stdout
+.It M
+outputs a number to stdout
+.It N
+if
+.Va R1
+equals
+.Va R2 ,
+goto the position at the position register
+.It O
+if
+.Va R1
+does not equal
+.Va R2 ,
+goto the position at the position register
+.It P
+if
+.Va R1
+is bigger than or equals
+.Va R2 ,
+goto the position at the position register
+.It Q
+if
+.Va R1
+is smaller than or equals
+.Va R2 ,
+goto the position at the position register
+.It R
+if
+.Va R3
+equals 0, goto the position at the position register
+.It S
+adds 1 to the current pointer
+.It T
+subtracts 1 to the current pointer
+.It U
+adds 10 to the current pointer
+.It V
+subtracts 10 to the current pointer
+.It W
+adds 100 to the current pointer
+.It X
+subtracts 100 to the current pointer
+.It Y
+sets the current pointer to 0
+.It Z
+switches in-between pointers (starts on memory pointer)
+.El
+.Pp
+Extension to the original specification:
+.Bl -tag -width XXX
+.It 0
+returns to shell
+.It 1
+sets
+.Va R3
+to its bitwise NOT
+.It 2
+bitwise AND
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It 3
+bitwise OR
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It 4
+bitwise XOR
+.Va R1
+and
+.Va R2
+and sets
+.Va R3
+to the result
+.It 5
+sets the
+.Va R1 Ns th
+bit of
+.Va R3
+.It 6
+clears the
+.Va R1 Ns th
+bit of
+.Va R3
+.It 7
+toggles the
+.Va R1 Ns th
+bit of
+.Va R3
+.It 8
+sets
+.Va R3
+to its
+.Va R1 Ns th
+bit
+.It 9
+swaps the values of
+.Va R1
+and
+.Va R2
+.It +
+left shifts
+.Va R1
+by
+.Va R2
+and sets
+.Va R3
+to the result
+.It /
+right shifts
+.Va R1
+by
+.Va R2
+and sets
+.Va R3
+to the result
+.El
 .Sh EXIT STATUS
-.Nm
-exits 0 on success, and >0 if an error occurs.
+.Ex -std
 .Sh EXAMPLES
 Interpret line by line ("interactive mode"):
 .Dl $ alphabeta
@@ -29,7 +328,7 @@ Read from stdin:
 .Dl $ <examples/99.abc alphabeta
 Read from file:
 .Dl $ alphabeta examples/99.abc
-.\" .Sh DIAGNOSTICS
-.\" For sections 1, 4, 6, 7, 8, and 9 printf/stderr messages only.
-.\" .Sh SEE ALSO
-.\" .Xr foobar 1
+.Sh SEE ALSO
+.Lk https://esolangs.org/wiki/AlphaBeta "Esolang page"
+.Pp
+.Lk https://github.com/TryItOnline/alphabeta "Original C++ implementation"
